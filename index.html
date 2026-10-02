@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Don’Ana Pizzaria | Maricá, RJ</title>
+  <meta name="description" content="Pizzaria em Maricá, RJ. Pizzas salgadas e doces, meio a meio, massas e petiscos. Peça pelo Anota AI ou iFood. Quinta a domingo, das 17h à meia-noite.">
+  <meta name="theme-color" content="#0B5D37">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="img/logo.png">
+
+  <meta property="og:type" content="restaurant">
+  <meta property="og:title" content="Don’Ana Pizzaria">
+  <meta property="og:description" content="Sabor de verdade, feita com carinho pra reunir a família. Maricá, RJ.">
+  <meta property="og:image" content="img/hero-pizza-960.webp">
+  <meta property="og:locale" content="pt_BR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="img/hero-pizza-640.webp 640w, img/hero-pizza-960.webp 960w, img/hero-pizza-1320.webp 1320w"
+        imagesizes="(max-width: 720px) 112vw, 60vw">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Don’Ana Pizzaria",
+    "slogan": "Sabor de verdade",
+    "servesCuisine": ["Pizza", "Massas"],
+    "priceRange": "R$ 40 a R$ 90",
+    "hasMenu": "https://pedido.anota.ai/loja/don-ana-pizzas-delivery",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Soares de Souza, 671, Flamengo",
+      "addressLocality": "Maricá",
+      "addressRegion": "RJ",
+      "postalCode": "24900-635",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "17:00",
+      "closes": "23:59"
+    }]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip" href="#cardapio">Pular para o cardápio</a>
+
+  <header class="nav" data-tone="dark">
+    <a class="nav__brand" href="#inicio">
+      <img src="img/logo.webp" alt="" width="44" height="44">
+      <span>Don’Ana</span>
+    </a>
+    <nav class="nav__links" aria-label="Seções">
+      <a href="#cardapio">Cardápio</a>
+      <a href="#combo">Promoção</a>
+      <a href="#endereco">Endereço</a>
+    </nav>
+    <a class="btn btn--red nav__cta" href="https://pedido.anota.ai/loja/don-ana-pizzas-delivery" target="_blank" rel="noopener">Pedir agora</a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__stage">
+        <div class="hero__copy">
+          <p class="status" data-status><span class="status__dot" aria-hidden="true"></span><span data-status-text>Quinta a domingo, das 17h à meia-noite</span></p>
+          <h1 class="hero__title" id="hero-title">Don’Ana</h1>
+          <p class="hero__place">Pizzaria em Maricá</p>
+          <p class="hero__lede">Sabor de verdade, feita com carinho pra reunir a família.</p>
+          <div class="hero__actions">
+            <a class="btn btn--red" href="https://pedido.anota.ai/loja/don-ana-pizzas-delivery" target="_blank" rel="noopener">Pedir pelo Anota AI</a>
+            <a class="btn btn--ghost" href="https://www.ifood.com.br/delivery/marica-rj/donana-pizzaria-delivery-centro/9b472c94-abbf-4922-971d-7c604047b8a2" target="_blank" rel="noopener">Pedir pelo iFood</a>
+          </div>
+        </div>
+
+        <p class="hero__line" aria-hidden="true">Catorze sabores salgados, seis doces e meio a meio a partir da média.</p>
+
+        <div class="pizza" aria-hidden="true">
+          <div class="pizza__roll">
+            <div class="pizza__body">
+              <div class="pizza__shadow"></div>
+              <img class="pizza__whole" src="img/hero-pizza-640.webp"
+                   srcset="img/hero-pizza-640.webp 640w, img/hero-pizza-960.webp 960w, img/hero-pizza-1320.webp 1320w"
+                   sizes="(max-width: 720px) 112vw, 60vw"
+                   alt="" width="1320" height="1320" decoding="async" fetchpriority="high">
+            </div>
+          </div>
+        </div>
+
+        <a class="hero__cue" href="#cardapio">Role para ver o cardápio</a>
+      </div>
+    </section>
+
+    <section class="menu" id="cardapio" aria-labelledby="menu-title">
+      <div class="menu__head wrap">
+        <h2 class="display" id="menu-title">Cardápio</h2>
+        <p class="menu__intro">Os mesmos preços do nosso Anota AI. Escolha o tamanho para ver quanto fica cada sabor e toque na pizza para pedir.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Categorias do cardápio" data-tabs></div>
+      <div class="wrap" data-panels></div>
+    </section>
+
+    <section class="final" aria-label="Promoção e endereço">
+      <div class="combo wrap" id="combo">
+        <img class="combo__photo" src="img/promo-800.webp"
+             srcset="img/promo-800.webp 800w, img/promo-1280.webp 1280w"
+             sizes="(max-width: 720px) 100vw, 46vw"
+             alt="Pizza de calabresa com cebola ao lado de uma pizza de chocolate com granulado"
+             width="1280" height="960" loading="lazy" decoding="async">
+        <div class="combo__copy">
+          <h2 class="display display--md">Promoção de fim de semana</h2>
+          <p class="combo__price"><span>R$</span> 100</p>
+          <p class="combo__what">Uma pizza salgada de 30&nbsp;cm, uma doce de 25&nbsp;cm e um Guaraná de 600&nbsp;ml.</p>
+          <p class="combo__flavors">Salgada: calabresa, portuguesa ou frango com catupiry.<br>Doce: chocolate com morango ou banana nevada.</p>
+          <a class="btn btn--white" data-combo-link href="https://pedido.anota.ai/loja/don-ana-pizzas-delivery" target="_blank" rel="noopener">Pedir a promoção</a>
+        </div>
+      </div>
+
+      <div class="visit wrap" id="endereco">
+        <div class="visit__col">
+          <h2 class="visit__title">Onde estamos</h2>
+          <address>Rua Soares de Souza, 671<br>Flamengo, Maricá, RJ<br>24900-635</address>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=Rua%20Soares%20de%20Souza%2C%20671%2C%20Flamengo%2C%20Maric%C3%A1%20-%20RJ%2C%2024900-635" target="_blank" rel="noopener">Abrir no Google Maps</a>
+        </div>
+        <div class="visit__col">
+          <h2 class="visit__title">Horário</h2>
+          <p>Quinta a domingo<br>das 17h à meia-noite</p>
+          <p class="visit__status" data-status-text></p>
+        </div>
+        <div class="visit__col">
+          <h2 class="visit__title">Delivery</h2>
+          <p>Peça pelo app que você preferir.</p>
+          <div class="visit__actions">
+            <a class="btn btn--white" href="https://pedido.anota.ai/loja/don-ana-pizzas-delivery" target="_blank" rel="noopener">Anota AI</a>
+            <a class="btn btn--ghost" href="https://www.ifood.com.br/delivery/marica-rj/donana-pizzaria-delivery-centro/9b472c94-abbf-4922-971d-7c604047b8a2" target="_blank" rel="noopener">iFood</a>
+          </div>
+        </div>
+      </div>
+
+      <footer class="foot wrap">
+        <p>© <span data-year>2026</span> Don’Ana Pizzaria, Maricá, RJ.</p>
+        <p class="foot__credits">Fotos do topo e da promoção: <a href="https://unsplash.com/photos/UpyfnDr6SPk" target="_blank" rel="noopener">Unsplash</a> e <a href="https://www.pexels.com/photo/chocolate-and-savory-pizzas-side-by-side-31094808/" target="_blank" rel="noopener">Pexels</a>. Fotos do cardápio: Don’Ana.</p>
+      </footer>
+    </section>
+  </main>
+
+  <dialog class="sheet" id="sheet" aria-labelledby="sheet-title">
+    <form method="dialog" class="sheet__closeform">
+      <button class="sheet__close" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </form>
+    <div class="sheet__media">
+      <div class="disc" data-disc>
+        <img class="disc__a" alt="" width="480" height="480">
+        <img class="disc__b" alt="" width="480" height="480">
+      </div>
+    </div>
+    <div class="sheet__body">
+      <h3 class="sheet__title" id="sheet-title"></h3>
+      <p class="sheet__desc" data-sheet-desc></p>
+      <fieldset class="sizes" data-sheet-sizes>
+        <legend>Tamanho</legend>
+      </fieldset>
+      <div class="half" data-half>
+        <p class="half__label" id="half-label">Meio a meio com</p>
+        <div class="half__list" role="group" aria-labelledby="half-label" data-half-list></div>
+      </div>
+      <p class="sheet__hint" data-sheet-hint></p>
+      <div class="sheet__actions">
+        <a class="btn btn--red" data-sheet-order target="_blank" rel="noopener">Pedir pelo Anota AI</a>
+        <a class="btn btn--line" href="https://www.ifood.com.br/delivery/marica-rj/donana-pizzaria-delivery-centro/9b472c94-abbf-4922-971d-7c604047b8a2" target="_blank" rel="noopener">Pedir pelo iFood</a>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
