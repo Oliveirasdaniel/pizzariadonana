@@ -200,7 +200,20 @@
     if (finalSec.getBoundingClientRect().top <= y) tone = 'red';
     else if (menuSec.getBoundingClientRect().top <= y) tone = 'light';
     if (nav.dataset.tone !== tone) nav.dataset.tone = tone;
+
+    // Aba ativa do celular: a última seção cujo topo já passou de 40% da tela.
+    const mark = window.innerHeight * 0.4;
+    let active = 'inicio';
+    tabbarLinks.forEach((a) => {
+      const sec = document.getElementById(a.dataset.tabbar);
+      if (sec && sec.getBoundingClientRect().top <= mark) active = a.dataset.tabbar;
+    });
+    tabbarLinks.forEach((a) => {
+      const on = a.dataset.tabbar === active;
+      if ((a.getAttribute('aria-current') === 'true') !== on) a.setAttribute('aria-current', on ? 'true' : 'false');
+    });
   }
+  const tabbarLinks = $$('[data-tabbar]');
   window.addEventListener('scroll', paintNav, { passive: true });
   paintNav();
 
