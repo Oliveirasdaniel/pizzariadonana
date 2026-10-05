@@ -15,6 +15,15 @@ f('calabresa', 'Calabresa', 'Molho de tomate, …', 'calabresa', [47.5, 62.9, 73
 
 Os códigos longos (como `67ad24eb161b45a30ff5ec91`) são os produtos no Anota AI. Só mude se o produto for recriado lá.
 
+As quentinhas ficam em `quentinhas`, no mesmo arquivo, com as fotos em `img/quentinhas/` (480 × 480 px, WebP).
+
+## Horário
+
+O site segue o horário de pedidos do Anota AI. Ele aparece em dois lugares, e os dois precisam mudar juntos:
+
+- `horario` em `js/data.js`, que liga o aviso de “Aberto agora” ou “Fechado”;
+- a lista em `.hours` no `index.html` (e o `openingHoursSpecification` no topo do mesmo arquivo, que o Google lê).
+
 ## Mapa
 
 O mapa do endereço é o do próprio Google Maps, incorporado com um `<iframe>` no `index.html`. Não precisa de chave, conta no Google Cloud nem cartão. No mapa, o cliente vê a ficha da loja e o botão **Como chegar**, que abre a rota no Google Maps.
@@ -33,7 +42,7 @@ Nunca coloque chaves no `js/config.example.js` nem em outro arquivo do projeto: 
 
 ### No site publicado (Vercel)
 
-Como o `js/config.js` não está no repositório, a Vercel cria esse arquivo em cada deploy: o `vercel.json` manda rodar `scripts/gerar-config.js`, que lê a chave das variáveis de ambiente do projeto. Para configurar (uma vez só):
+Como o `js/config.js` não está no repositório, a Vercel cria esse arquivo em cada deploy: o `vercel.json` manda rodar `scripts/gerar-config.js`, que copia o site para `public/` e cria ali o `js/config.js` com a chave das variáveis de ambiente do projeto. Só vai ao ar o que está na lista `ARQUIVOS` do script; se o site ganhar um arquivo ou pasta nova na raiz, acrescente-o lá. Para configurar a chave (uma vez só):
 
 1. Na Vercel, abra o projeto e vá em *Settings > Environment Variables*.
 2. Crie a variável `SMARTSUPP_KEY` com a chave da Smartsupp, marcando *Production* e *Preview*.
@@ -51,7 +60,7 @@ O chat recebe nome, telefone e cookies dos visitantes, por isso o site tem uma p
 - `privacidade.html`: política de privacidade (LGPD)
 - `css/style.css`: visual (cores da Itália, tipografia, layout)
 - `js/config.example.js`: modelo da chave da Smartsupp (o `js/config.js` com a chave de verdade fica fora do Git)
-- `js/data.js`: cardápio e links de pedido
-- `vercel.json` e `scripts/gerar-config.js`: deploy na Vercel, que cria o `js/config.js` com a chave guardada na Vercel
+- `js/data.js`: cardápio, links de pedido e horário
+- `vercel.json` e `scripts/gerar-config.js`: deploy na Vercel, que monta o site em `public/` e cria o `js/config.js` com a chave guardada na Vercel
 - `js/main.js`: animação da pizza (só no computador), abas, tamanhos, busca, meio a meio e chat
-- `img/`: fotos do cardápio (Anota AI da Don’Ana) e do topo/promoção ([Unsplash](https://unsplash.com/photos/UpyfnDr6SPk) e [Pexels](https://www.pexels.com/photo/chocolate-and-savory-pizzas-side-by-side-31094808/), licenças livres para uso comercial)
+- `img/`: fotos do cardápio (Anota AI da Don’Ana) e do topo ([Unsplash](https://unsplash.com/photos/UpyfnDr6SPk), licença livre para uso comercial)

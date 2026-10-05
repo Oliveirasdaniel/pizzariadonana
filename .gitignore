@@ -9,3 +9,6 @@ js/config.js
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Saída do build na Vercel (scripts/gerar-config.js)
+public/

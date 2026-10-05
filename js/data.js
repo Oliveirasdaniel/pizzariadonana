@@ -156,10 +156,38 @@ window.DONANA = (function () {
     },
   ];
 
-  const combo = {
-    price: 100,
-    url: product('697526701309f567f21b9caf'),
+  // Quentinhas, na ordem do Anota AI. Feijoada e carré ficam sem foto: as do Anota AI
+  // têm marca d'água de outros restaurantes.
+  const quentinhas = [
+    i('Filé de peixe frito com salada', 'Filé de peixe, arroz, feijão, farofa e salada de alface com tomate ou de legumes.', 28, '69852533628d6270eeb865cb', 'peixe-frito'),
+    i('Filé de frango com fritas', 'Filé de peito de frango, batata frita, arroz, feijão e farofa.', 24, '6985261b0ca2713035e32734', 'frango-fritas'),
+    i('Calabresa com aipim frito', 'Linguiça calabresa, aipim frito, arroz, feijão e farofa.', 22, '698526b4f628b13a4f2b95e7', 'calabresa-aipim'),
+    i('Carne assada com espaguete', 'Espaguete com molho vermelho e carne assada.', 26, '6985275ef0da891235301c86', 'carne-espaguete'),
+    i('Contrafilé com fritas', 'Contrafilé, batata frita, arroz, feijão e farofa.', 35, '698527d44b2f8266ed7c6dec', 'contra-file'),
+    i('Linguiça mineira com aipim frito', 'Linguiça mineira, aipim frito, arroz, feijão e farofa.', 24, '6985284ff628b13a4f2bd535', 'linguica-aipim'),
+    i('Feijoada completa', '', 28, '698f508f240bb2846c588c13'),
+    i('Coxa e sobrecoxa assadas', 'Coxa e sobrecoxa assadas, arroz, feijão e farofa.', 24, '69a6e6d510d51e3ec13b2ffe', 'coxa-sobrecoxa'),
+    i('Carré com couve', 'Carré, couve, arroz, feijão e farofa.', 28, '69a6e751bef8f50166dc850b'),
+    i('Macarrão com carne moída e queijo', 'Macarrão, carne moída e queijo.', 22, '69a991cef3cf7527433d0f90'),
+    i('Moqueca de peixe', 'Moqueca, arroz, pirão e salada.', 28, '69b4295ce24db5b7fb493e34'),
+    i('Peixada com molho de camarão', 'Peixe com molho de camarão, arroz, pirão e salada verde.', 28, '69cfdd8946c3ff944162f3dc', 'peixada-camarao'),
+    i('Macarrão à bolonhesa', 'Macarrão com molho de carne moída.', 24.9, '69d654421866620b63c73172', 'bolonhesa'),
+    i('Strogonoff de frango com batata palha', 'Strogonoff de frango, arroz e batata palha.', 28, '69e2646002e656740a9d507b', 'strogonoff'),
+    i('Costelinha suína com purê', 'Costelinha com barbecue, purê, arroz e feijão.', 30, '69e42387722f050538084e65', 'costelinha'),
+    i('Drumete com legumes', 'Drumete de frango, legumes, arroz, feijão e farofa.', 28, '6a01e0a6ba641e2a5b08bbc6', 'drumete-legumes'),
+  ];
+
+  // Horário de pedidos, igual ao do Anota AI: [abre, fecha] em horas, por dia (0 = domingo).
+  // Se mudar, atualize também a lista de horários no index.html.
+  const horario = {
+    0: [[18, 24]],
+    1: [[9, 17]],
+    2: [[9, 17]],
+    3: [[9, 17]],
+    4: [[9, 24]],
+    5: [[9, 24]],
+    6: [[17, 24]],
   };
 
-  return { ANOTA, IFOOD, product, sizes, pizzas, bordas, combos, massas, petiscos, bebidas, combo };
+  return { ANOTA, IFOOD, product, sizes, pizzas, bordas, combos, massas, quentinhas, petiscos, bebidas, horario };
 })();

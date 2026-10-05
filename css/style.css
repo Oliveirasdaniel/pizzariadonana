@@ -1,5 +1,5 @@
 /* Don’Ana Pizzaria
-   A página é a bandeira, de cima para baixo: verde (hero), branco (cardápio), vermelho (promoção e endereço). */
+   A página é a bandeira, de cima para baixo: verde (hero), branco (cardápio), vermelho (endereço e horário). */
 
 :root {
   --basilico: #0B5D37;
@@ -801,7 +801,7 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
   background: linear-gradient(to bottom, rgba(245, 245, 240, 0), var(--mozzarella) 22px);
 }
 
-/* ---------- Final: promoção e endereço (vermelho) ---------- */
+/* ---------- Final: endereço e horário (vermelho) ---------- */
 
 .final {
   position: relative;
@@ -811,46 +811,14 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
   padding-top: clamp(80px, 10vw, 150px);
   --focus: var(--crosta);
 }
-
-.combo {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: 48px clamp(40px, 6vw, 96px);
-}
+/* O conteúdo fica acima da textura de granulado (.final::before). */
 .final > * { position: relative; }
-.combo__photo {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 22px;
-  background: #7d1820;
-  box-shadow: 0 40px 60px -30px rgba(50, 0, 6, .8);
-}
 
-.combo__price {
-  display: flex;
-  align-items: flex-start;
-  gap: .08em;
-  margin: 22px 0 18px;
-  font-family: var(--serif);
-  font-weight: 900;
-  font-variation-settings: 'opsz' 96;
-  font-size: clamp(76px, 9vw, 136px);
-  line-height: .9;
-  letter-spacing: -0.02em;
-}
-.combo__price span { margin-top: .16em; font-size: .34em; letter-spacing: 0; }
-.combo__what { max-width: 28ch; font-size: clamp(19px, 1.6vw, 22px); line-height: 1.45; }
-.combo__flavors { margin: 14px 0 30px; font-size: 16px; line-height: 1.6; color: rgba(245, 245, 240, .9); }
 
 .visit {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 40px;
-  margin-top: clamp(88px, 10vw, 150px);
-  padding-top: 48px;
-  border-top: 1px solid rgba(255, 255, 255, .3);
 }
 .visit__title {
   margin-bottom: 14px;
@@ -862,7 +830,10 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
 }
 .visit address { font-style: normal; font-size: 18px; line-height: 1.55; }
 .visit p { font-size: 18px; }
-.visit__status { margin-top: 10px; font-weight: 700; }
+.hours { display: grid; gap: 6px; margin: 0; font-size: 18px; }
+.hours div { display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 16px; max-width: 320px; }
+.hours dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.visit__status { margin-top: 14px; font-weight: 700; }
 .visit__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .link {
   display: inline-block;
@@ -969,7 +940,7 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
     inset: auto 0 0;
     z-index: 60;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding-bottom: env(safe-area-inset-bottom);
     background: rgba(245, 245, 240, .97);
     -webkit-backdrop-filter: blur(10px);
@@ -1066,8 +1037,6 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
   .sheet__actions { bottom: 0; margin: 0 -20px -28px; padding: 14px 20px 20px; }
   .sheet__actions .btn { flex: 1 1 100%; }
 
-  .combo { grid-template-columns: 1fr; }
-  .combo__photo { border-radius: 18px; }
   .visit { grid-template-columns: 1fr; gap: 36px; }
   .visit__map { height: 320px; border-radius: 18px; }
 }

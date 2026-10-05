@@ -13,16 +13,27 @@
 
   /* ---------- Aberto ou fechado (horário de Maricá) ---------- */
 
+  const DAY_NAMES = ['no domingo', 'na segunda', 'na terça', 'na quarta', 'na quinta', 'na sexta', 'no sábado'];
+  const atHour = (h) => (h === 24 ? 'meia-noite' : `${h}h`);
+
   function openStatus() {
     const parts = new Intl.DateTimeFormat('en-US', {
       timeZone: 'America/Sao_Paulo', weekday: 'short', hour: 'numeric', hour12: false,
     }).formatToParts(new Date());
     const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(parts.find((p) => p.type === 'weekday').value);
     const hour = Number(parts.find((p) => p.type === 'hour').value) % 24;
-    const openDay = [4, 5, 6, 0].includes(day);
-    if (openDay && hour >= 17) return { open: true, text: 'Aberto agora, até meia-noite' };
-    if (openDay) return { open: false, text: 'Abrimos hoje às 17h' };
-    return { open: false, text: `Fechado agora. Abrimos ${day === 3 ? 'amanhã' : 'na quinta'}, às 17h` };
+    const today = D.horario[day] || [];
+    const now = today.find(([from, to]) => hour >= from && hour < to);
+    if (now) return { open: true, text: `Aberto agora, até ${atHour(now[1])}` };
+    const later = today.find(([from]) => hour < from);
+    if (later) return { open: false, text: `Abrimos hoje às ${atHour(later[0])}` };
+    for (let i = 1; i <= 7; i++) {
+      const next = D.horario[(day + i) % 7];
+      if (next && next.length) {
+        return { open: false, text: `Fechado agora. Abrimos ${i === 1 ? 'amanhã' : DAY_NAMES[(day + i) % 7]}, às ${atHour(next[0][0])}` };
+      }
+    }
+    return { open: false, text: 'Fechado agora' };
   }
   function paintStatus() {
     const s = openStatus();
@@ -32,7 +43,6 @@
   paintStatus();
   setInterval(paintStatus, 60000);
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
-  $('[data-combo-link]').href = D.combo.url;
 
   /* ---------- Hero: a pizza conduzida pelo scroll, como um vídeo ---------- */
 
@@ -223,6 +233,7 @@
     { id: 'salgadas', label: 'Salgadas', count: D.pizzas.salgadas.flavors.length },
     { id: 'doces', label: 'Doces', count: D.pizzas.doces.flavors.length },
     { id: 'dois-sabores', label: 'Dois sabores', count: D.combos.length },
+    { id: 'quentinhas', label: 'Quentinhas', count: D.quentinhas.length },
     { id: 'massas', label: 'Massas', count: D.massas.items.length },
     { id: 'petiscos', label: 'Petiscos', count: D.petiscos.length },
     { id: 'bebidas', label: 'Bebidas' },
@@ -307,7 +318,7 @@
     <li>
       <a class="row${opts.compact ? ' row--compact' : ''}${opts.thumb ? ' row--thumb' : ''}" href="${it.url}" target="_blank" rel="noopener">
         ${opts.thumb ? (it.img
-          ? `<span class="row__thumb"><img src="img/petiscos/${it.img}.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span>`
+          ? `<span class="row__thumb"><img src="img/${opts.thumb}/${it.img}.webp" alt="" width="480" height="480" loading="lazy" decoding="async"></span>`
           : '<span class="row__thumb row__thumb--empty" aria-hidden="true"></span>') : ''}
         <span class="row__name">${it.name}</span>
         <span class="row__lead" aria-hidden="true"></span>
@@ -326,14 +337,26 @@
       </div>`;
   }
 
+  // Lista em duas colunas, com miniatura de img/<pasta>/.
+  function thumbList(items, folder) {
+    const half = Math.ceil(items.length / 2);
+    return `
+      <div class="cols">
+        <ul class="list">${items.slice(0, half).map((it) => row(it, { thumb: folder })).join('')}</ul>
+        <ul class="list">${items.slice(half).map((it) => row(it, { thumb: folder })).join('')}</ul>
+      </div>`;
+  }
+
+  function quentinhasPanel() {
+    return `
+      <p class="panel__intro">Pratos do dia a dia, a maioria com arroz, feijão e farofa. Toque em uma quentinha para pedir.</p>
+      ${thumbList(D.quentinhas, 'quentinhas')}`;
+  }
+
   function petiscosPanel() {
-    const half = Math.ceil(D.petiscos.length / 2);
     return `
       <p class="panel__intro">Porções para dividir na mesa. Toque em um petisco para pedir.</p>
-      <div class="cols">
-        <ul class="list">${D.petiscos.slice(0, half).map((it) => row(it, { thumb: true })).join('')}</ul>
-        <ul class="list">${D.petiscos.slice(half).map((it) => row(it, { thumb: true })).join('')}</ul>
-      </div>`;
+      ${thumbList(D.petiscos, 'petiscos')}`;
   }
 
   function bebidasPanel() {
@@ -352,6 +375,7 @@
     salgadas: () => pizzaPanel('salgadas'),
     doces: () => pizzaPanel('doces'),
     'dois-sabores': combosPanel,
+    quentinhas: quentinhasPanel,
     massas: massasPanel,
     petiscos: petiscosPanel,
     bebidas: bebidasPanel,
