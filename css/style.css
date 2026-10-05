@@ -98,6 +98,7 @@ a { color: inherit; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   min-height: 50px;
   padding: 0 24px;
   border: 2px solid transparent;
@@ -889,7 +890,6 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
 .visit__route {
   position: absolute;
   top: 12px; right: 12px;
-  gap: 8px;
   min-height: 46px;
   padding-inline: 18px;
   box-shadow: 0 6px 16px rgba(50, 0, 6, .35);
@@ -903,7 +903,51 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
   color: rgba(245, 245, 240, .82);
 }
 .foot__credits { margin-top: 6px; font-size: 13px; color: rgba(245, 245, 240, .7); }
-.foot__credits a { text-underline-offset: 3px; }
+.foot a { text-underline-offset: 3px; }
+
+/* ---------- Política de privacidade (privacidade.html) ---------- */
+
+.legal-page { padding-bottom: env(safe-area-inset-bottom); }
+.legal-top {
+  background: var(--basilico);
+  color: var(--mozzarella);
+  padding-block: 20px clamp(48px, 7vw, 88px);
+  --focus: var(--crosta);
+}
+.legal-top__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+.legal-top__bar .link { margin-top: 0; }
+.legal-top p { margin-top: 18px; font-size: 18px; color: rgba(245, 245, 240, .82); }
+.legal {
+  max-width: 72ch;
+  padding-block: clamp(40px, 6vw, 72px);
+}
+.legal section + section { margin-top: 40px; }
+.legal h2 {
+  margin-bottom: 12px;
+  font-family: var(--serif);
+  font-weight: 800;
+  font-variation-settings: 'opsz' 48;
+  font-size: clamp(26px, 3vw, 32px);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.legal p + p, .legal p + ul, .legal ul + p { margin-top: 12px; }
+.legal ul { margin: 0; padding-left: 1.2em; }
+.legal li + li { margin-top: 10px; }
+.legal a { text-underline-offset: 3px; }
+.legal-foot {
+  padding-block: 24px 32px;
+  border-top: 1px solid var(--linha);
+  font-size: 14px;
+  color: var(--tinta-suave);
+}
 
 /* Barra de abas do celular */
 .tabbar { display: none; }

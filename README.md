@@ -2,7 +2,7 @@
 
 Site da Don’Ana Pizzaria, em Maricá (RJ). É um site estático: basta abrir o `index.html` no navegador ou publicar a pasta em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel).
 
-Os pedidos são feitos pelo [Anota AI](https://pedido.anota.ai/loja/don-ana-pizzas-delivery) e pelo [iFood](https://www.ifood.com.br/delivery/marica-rj/donana-pizzaria-delivery-centro/9b472c94-abbf-4922-971d-7c604047b8a2). Cada botão do cardápio abre o produto certo no Anota AI.
+Os pedidos são feitos pelo [Anota AI](https://pedido.anota.ai/loja/don-ana-pizzas-delivery) e pelo [iFood](https://www.ifood.com.br/delivery/marica-rj/donana-pizzaria-delivery-centro/9b472c94-abbf-4922-971d-7c604047b8a2). Cada botão do cardápio abre o produto certo no Anota AI. O WhatsApp da loja, (21) 97093-8709, aparece no endereço e no rodapé.
 
 ## Como atualizar o cardápio
 
@@ -33,9 +33,12 @@ Nunca coloque chaves no `js/config.example.js` nem em outro arquivo do projeto: 
 
 A chave está no painel da [Smartsupp](https://www.smartsupp.com), em *Settings > Live chat > Installation*: copie só o valor de `_smartsupp.key` e cole em `smartsuppKey`. O botão do chat usa o vermelho do site e, no celular, fica acima da barra de abas. Idioma, mensagens e horário de atendimento são configurados no painel da Smartsupp.
 
+O chat recebe nome, telefone e cookies dos visitantes, por isso o site tem uma política de privacidade (LGPD) em `privacidade.html`. Quando o site estiver no ar, coloque o endereço dela no painel da Smartsupp, em *Settings > Live chat > Contact form > Link to data privacy notice*. Se um serviço novo passar a receber dados dos visitantes, acrescente-o nessa página e atualize a data no topo.
+
 ## Estrutura
 
 - `index.html`: a página
+- `privacidade.html`: política de privacidade (LGPD)
 - `css/style.css`: visual (cores da Itália, tipografia, layout)
 - `js/config.example.js`: modelo da chave da Smartsupp (o `js/config.js` com a chave de verdade fica fora do Git)
 - `js/data.js`: cardápio e links de pedido
