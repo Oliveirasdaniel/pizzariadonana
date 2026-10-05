@@ -1,6 +1,6 @@
 # Don’Ana Pizzaria
 
-Site da Don’Ana Pizzaria, em Maricá (RJ). É um site estático: basta abrir o `index.html` no navegador ou publicar a pasta em qualquer hospedagem estática (GitHub Pages, Netlify, Vercel).
+Site da Don’Ana Pizzaria, em Maricá (RJ). É um site estático, publicado na Vercel em https://pizzariadonana.vercel.app: cada push na branch `main` gera um deploy novo. Para ver no computador, abra o `index.html` no navegador.
 
 Os pedidos são feitos pelo [Anota AI](https://pedido.anota.ai/loja/don-ana-pizzas-delivery) e pelo [iFood](https://www.ifood.com.br/delivery/marica-rj/donana-pizzaria-delivery-centro/9b472c94-abbf-4922-971d-7c604047b8a2). Cada botão do cardápio abre o produto certo no Anota AI. O WhatsApp da loja, (21) 97093-8709, aparece no endereço e no rodapé.
 
@@ -29,11 +29,21 @@ A chave do chat fica em `js/config.js`, que **não vai para o Git** (está no `.
 cp js/config.example.js js/config.js
 ```
 
-Nunca coloque chaves no `js/config.example.js` nem em outro arquivo do projeto: só o `js/config.js` tem chaves. Como ele não está no repositório, quem publicar o site precisa criar o `js/config.js` no servidor (ou gerar o arquivo no deploy a partir dos segredos da hospedagem). Sem a chave, o chat não aparece e o resto do site funciona normalmente.
+Nunca coloque chaves no `js/config.example.js` nem em outro arquivo do projeto: só o `js/config.js` tem chaves. Sem a chave, o chat não aparece e o resto do site funciona normalmente.
+
+### No site publicado (Vercel)
+
+Como o `js/config.js` não está no repositório, a Vercel cria esse arquivo em cada deploy: o `vercel.json` manda rodar `scripts/gerar-config.js`, que lê a chave das variáveis de ambiente do projeto. Para configurar (uma vez só):
+
+1. Na Vercel, abra o projeto e vá em *Settings > Environment Variables*.
+2. Crie a variável `SMARTSUPP_KEY` com a chave da Smartsupp, marcando *Production* e *Preview*.
+3. Em *Deployments*, abra o último deploy e clique em *Redeploy* (variável nova só vale a partir do próximo deploy).
+
+Se a variável faltar, o deploy avisa no log (“SMARTSUPP_KEY não está definida”) e o site vai ao ar sem o chat.
 
 A chave está no painel da [Smartsupp](https://www.smartsupp.com), em *Settings > Live chat > Installation*: copie só o valor de `_smartsupp.key` e cole em `smartsuppKey`. O botão do chat usa o vermelho do site e, no celular, fica acima da barra de abas. Idioma, mensagens e horário de atendimento são configurados no painel da Smartsupp.
 
-O chat recebe nome, telefone e cookies dos visitantes, por isso o site tem uma política de privacidade (LGPD) em `privacidade.html`. Quando o site estiver no ar, coloque o endereço dela no painel da Smartsupp, em *Settings > Live chat > Contact form > Link to data privacy notice*. Se um serviço novo passar a receber dados dos visitantes, acrescente-o nessa página e atualize a data no topo.
+O chat recebe nome, telefone e cookies dos visitantes, por isso o site tem uma política de privacidade (LGPD) em `privacidade.html`. O aviso de dados do formulário do chat já aponta para ela pelo código (`privacyNoticeUrl` em `js/main.js`), em qualquer domínio. Se um serviço novo passar a receber dados dos visitantes, acrescente-o nessa página e atualize a data no topo.
 
 ## Estrutura
 
@@ -42,5 +52,6 @@ O chat recebe nome, telefone e cookies dos visitantes, por isso o site tem uma p
 - `css/style.css`: visual (cores da Itália, tipografia, layout)
 - `js/config.example.js`: modelo da chave da Smartsupp (o `js/config.js` com a chave de verdade fica fora do Git)
 - `js/data.js`: cardápio e links de pedido
+- `vercel.json` e `scripts/gerar-config.js`: deploy na Vercel, que cria o `js/config.js` com a chave guardada na Vercel
 - `js/main.js`: animação da pizza (só no computador), abas, tamanhos, busca, meio a meio e chat
 - `img/`: fotos do cardápio (Anota AI da Don’Ana) e do topo/promoção ([Unsplash](https://unsplash.com/photos/UpyfnDr6SPk) e [Pexels](https://www.pexels.com/photo/chocolate-and-savory-pizzas-side-by-side-31094808/), licenças livres para uso comercial)
