@@ -1,3 +1,7 @@
+# Chaves do site (Smartsupp): ficam só na máquina e no servidor, nunca no Git.
+# O modelo sem chaves é o js/config.example.js.
+js/config.js
+
 # Rascunhos de testes no navegador
 .playwright-mcp/
 

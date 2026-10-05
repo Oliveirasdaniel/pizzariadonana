@@ -533,4 +533,32 @@
   sheet.addEventListener('close', () => {
     if (sheetState.trigger && document.contains(sheetState.trigger)) sheetState.trigger.focus({ preventScroll: true });
   });
+
+  /* ---------- Chat ao vivo (Smartsupp) ---------- */
+
+  const C = window.DONANA_CONFIG || {};
+
+  function loadChat() {
+    window._smartsupp = Object.assign(window._smartsupp || {}, {
+      key: C.smartsuppKey,
+      color: getComputedStyle(document.documentElement).getPropertyValue('--pomodoro').trim(),
+    });
+    // No celular, o botão do chat fica acima da barra de abas.
+    const tabbar = $('.tabbar');
+    if (tabbar.offsetHeight) window._smartsupp.offsetY = tabbar.offsetHeight + 12;
+
+    if (window.smartsupp) return;
+    const o = window.smartsupp = function () { o._.push(arguments); };
+    o._ = [];
+    const s = document.createElement('script');
+    s.src = 'https://www.smartsuppchat.com/loader.js?';
+    s.async = true;
+    s.charset = 'utf-8';
+    document.head.append(s);
+  }
+  // Entra depois que a página termina de carregar, para não atrasar as fotos.
+  if (C.smartsuppKey) {
+    if (document.readyState === 'complete') loadChat();
+    else window.addEventListener('load', loadChat, { once: true });
+  }
 })();
