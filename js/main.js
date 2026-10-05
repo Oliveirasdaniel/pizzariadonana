@@ -542,6 +542,9 @@
     window._smartsupp = Object.assign(window._smartsupp || {}, {
       key: C.smartsuppKey,
       color: getComputedStyle(document.documentElement).getPropertyValue('--pomodoro').trim(),
+      // O aviso de dados do formulário leva à nossa política (LGPD), em qualquer domínio onde o site estiver.
+      privacyNoticeEnabled: true,
+      privacyNoticeUrl: new URL('privacidade.html', location.href).href,
     });
     // No celular, o botão do chat fica acima da barra de abas.
     const tabbar = $('.tabbar');
