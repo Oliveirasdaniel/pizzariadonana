@@ -920,6 +920,25 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
   color: var(--tinta-suave);
 }
 
+/* Botão de conversa (WhatsApp) no mesmo lugar do botão da Smartsupp; some quando ele carrega. */
+.chat-fab {
+  position: fixed;
+  right: 12px;
+  bottom: 24px;
+  z-index: 55;
+  display: grid;
+  place-items: center;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--pomodoro);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(50, 0, 6, .35);
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .15s, transform .15s;
+}
+.chat-fab:hover { background: var(--pomodoro-forte); transform: scale(1.05); }
+.chat-fab[hidden] { display: none; }
+
 /* Barra de abas do celular */
 .tabbar { display: none; }
 
@@ -977,6 +996,7 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
     background: var(--pomodoro);
   }
   .tabbar a:focus-visible { outline-offset: -4px; }
+  .chat-fab { bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 12px); }
   /* Pela aba "Cardápio", o título para logo abaixo da barra do topo. */
   .menu { scroll-margin-top: -100px; }
 
@@ -1055,6 +1075,6 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
   .hero__stage { position: relative; }
   .hero__line, .hero__cue { display: none; }
   .hero__stage.is-live .pizza__roll { animation: none; }
-  .flavor__img, .disc__b, .disc::after { transition: none; }
+  .flavor__img, .disc__b, .disc::after, .chat-fab { transition: none; }
   .sheet[open], .sheet[open] .disc { animation: none; }
 }

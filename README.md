@@ -38,7 +38,9 @@ A chave do chat fica em `js/config.js`, que **não vai para o Git** (está no `.
 cp js/config.example.js js/config.js
 ```
 
-Nunca coloque chaves no `js/config.example.js` nem em outro arquivo do projeto: só o `js/config.js` tem chaves. Sem a chave, o chat não aparece e o resto do site funciona normalmente.
+Nunca coloque chaves no `js/config.example.js` nem em outro arquivo do projeto: só o `js/config.js` tem chaves.
+
+O site sempre mostra um botão de conversa no canto da tela. Enquanto o chat da Smartsupp não aparece, esse botão leva ao WhatsApp da loja; quando o botão da Smartsupp aparece, ele some. Assim o cliente tem como conversar mesmo sem a chave, com o chat fora do ar ou bloqueado pelo navegador (o navegador da Xiaomi, por exemplo, bloqueia chats como o da Smartsupp).
 
 ### No site publicado (Vercel)
 

@@ -561,6 +561,23 @@
   /* ---------- Chat ao vivo (Smartsupp) ---------- */
 
   const C = window.DONANA_CONFIG || {};
+  const chatFab = $('[data-chat-fab]');
+
+  // O botão de WhatsApp do site fica na tela até o botão da Smartsupp aparecer de verdade.
+  // Sem chave, com o chat bloqueado pelo navegador (o da Xiaomi bloqueia) ou fora do ar,
+  // o cliente continua com um botão de conversa.
+  function watchChatButton() {
+    const started = Date.now();
+    const timer = setInterval(() => {
+      const btn = document.getElementById('widgetButtonFrame');
+      if (btn && btn.offsetWidth > 0 && getComputedStyle(btn).visibility !== 'hidden') {
+        chatFab.hidden = true;
+        clearInterval(timer);
+      } else if (Date.now() - started > 30000) {
+        clearInterval(timer);
+      }
+    }, 500);
+  }
 
   function loadChat() {
     window._smartsupp = Object.assign(window._smartsupp || {}, {
@@ -582,6 +599,7 @@
     s.async = true;
     s.charset = 'utf-8';
     document.head.append(s);
+    watchChatButton();
   }
   // Entra depois que a página termina de carregar, para não atrasar as fotos.
   if (C.smartsuppKey) {
