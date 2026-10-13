@@ -1,6 +1,6 @@
 # Don’Ana Pizzaria
 
-Site da Don’Ana Pizzaria, em Maricá (RJ). É um site estático, publicado na Vercel em https://donanapizzariadelivery.com.br (também responde em https://pizzariadonana.vercel.app): cada push na branch `main` gera um deploy novo. Para ver no computador, abra o `index.html` no navegador.
+Site da Don’Ana Pizzaria, em Maricá (RJ). É um site estático, publicado na Vercel em https://www.donanapizzariadelivery.com.br (também responde em https://pizzariadonana.vercel.app): cada push na branch `main` gera um deploy novo. Para ver no computador, abra o `index.html` no navegador.
 
 Os pedidos são feitos pelo [Anota AI](https://pedido.anota.ai/loja/don-ana-pizzas-delivery) e pelo [iFood](https://www.ifood.com.br/delivery/marica-rj/donana-pizzaria-delivery-centro/9b472c94-abbf-4922-971d-7c604047b8a2). Cada botão do cardápio abre o produto certo no Anota AI. O WhatsApp da loja, (21) 97093-8709, aparece no endereço e no rodapé.
 
@@ -69,4 +69,4 @@ O chat recebe nome, telefone e cookies dos visitantes, por isso o site tem uma p
 
 ## Domínio
 
-O domínio donanapizzariadelivery.com.br é do Registro.br e aponta para a Vercel pelos registros de DNS que a Vercel mostra em *Domains*. O endereço do site está escrito no `index.html` (canonical, `og:url`, `og:image` e JSON-LD), no `privacidade.html`, no `robots.txt` e no `sitemap.xml`: se o domínio mudar, troque em todos. A imagem da prévia do link no WhatsApp e nas redes é `img/compartilhar.jpg` (1200 × 630).
+O domínio donanapizzariadelivery.com.br é do Registro.br e aponta para a Vercel pelos registros de DNS que a Vercel mostra em *Domains*. O endereço principal é o com www; o sem www redireciona para ele. O endereço do site está escrito no `index.html` (canonical, `og:url`, `og:image` e JSON-LD), no `privacidade.html`, no `robots.txt` e no `sitemap.xml`: se o domínio mudar, troque em todos. A imagem da prévia do link no WhatsApp e nas redes é `img/compartilhar.jpg` (1200 × 630).
