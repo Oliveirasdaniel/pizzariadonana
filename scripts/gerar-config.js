@@ -11,7 +11,7 @@ if (!process.env.VERCEL) {
 }
 
 // Só o que vai ao ar. Arquivo ou pasta nova do site precisa entrar nesta lista.
-const ARQUIVOS = ['index.html', 'privacidade.html', 'favicon.png', 'css', 'js', 'img'];
+const ARQUIVOS = ['index.html', 'privacidade.html', 'favicon.png', 'robots.txt', 'sitemap.xml', 'css', 'js', 'img'];
 
 const raiz = path.join(__dirname, '..');
 const saida = path.join(raiz, 'public');
