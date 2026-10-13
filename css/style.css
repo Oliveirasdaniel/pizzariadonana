@@ -830,6 +830,7 @@ input:focus-visible + .size { outline: 3px solid var(--focus); outline-offset: 3
 }
 .visit address { font-style: normal; font-size: 18px; line-height: 1.55; }
 .visit p { font-size: 18px; }
+.visit p.visit__note { font-size: 15px; line-height: 1.5; opacity: .8; margin-top: 6px; }
 .hours { display: grid; gap: 6px; margin: 0; font-size: 18px; }
 .hours div { display: flex; flex-wrap: wrap; justify-content: space-between; column-gap: 16px; max-width: 320px; }
 .hours dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
